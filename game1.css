@@ -1,19 +1,49 @@
-body{
+body {
     padding: 0;
     margin: 0;
 }
 
-.nav-bar{
+.nav-bar {
     display: flex;
     position: relative;
     justify-content: space-between;
-    padding: 8px;
-    margin: 1px;
+    padding: 6px;
+    margin: 3px;
+    padding-bottom: 1px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    
+
 }
 
-.nav-links{
+.nav-links {
     display: flex;
     column-gap: 15px;
+}
+
+.nav-link a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-link a:hover {
+    color: red;
+}
+
+.hero-selection {
+    padding: 20px;
+}
+
+.heros {
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+}
+
+.hero-card{
+    border: 1px solid;
+    padding: 1px;
+}
+
+.hero-card img {
+    height: 220px;
+    width: 220px;
 }
