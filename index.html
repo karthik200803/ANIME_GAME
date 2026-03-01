@@ -26,37 +26,39 @@
 
             <div class="hero-card">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Web_of_Spider-Man_Vol_1_129-1.png/250px-Web_of_Spider-Man_Vol_1_129-1.png"
-                    alt="" onclick="SelectHero('Spider-Man')">
+                    alt="" onclick="SelectHero('SPIDER-MAN')">
                 <p>Spider-man</p>
             </div>
             <div class="hero-card">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Iron_Man_%28circa_2018%29.png/250px-Iron_Man_%28circa_2018%29.png"
-                    alt="" onclick="SelectHero('Iron-Man')">
+                    alt="" onclick="SelectHero('IRON-MAN')">
                 <p>Iron-Man</p>
             </div>
             <div class="hero-card">
                 <img src="https://michaelspradlin.com/WP/wp-content/uploads/2013/06/Captain-America-Comic-e1370355949874.jpg"
-                    alt="" onclick="SelectHero('Captain-America')">
+                    alt="" onclick="SelectHero('CAPTAIN-AMERICA')">
                 <p>Captain-America</p>
             </div>
 
         </div>
     </div>
-    
+
     <p class="hero1">PLAYER 1 HERO : NOT SELECTED </p>
     <p class="hero2">PLAYER 2 HERO : NOT SELECTED </p>
 
-    <button> Start Battle ! </button>
+    <button onclick="StartBattle()"> Start Battle ! </button>
 
     <div class="BattleArea">
-        <p class="TurnText"></p>
-        
+
+
         <p class="P1health"></p>
         <p class="P2health"></p>
 
-        <button>Attack 1</button>
-        <button>Attack 1</button>
-        <button>Attack 1</button>
+        <p class="TurnText"></p>
+
+        <button onclick="Attack(15)">Attack 1</button>
+        <button onclick="Attack(25)">Attack 2</button>
+        <button onclick="Attack(35)">Attack 3</button>
 
         <p class="ActionText"></p>
 

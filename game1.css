@@ -47,3 +47,12 @@ body {
     height: 220px;
     width: 220px;
 }
+
+.BattleArea{
+    display:none;
+    text-align: center;
+    border: 2;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    width: auto;
+    height: auto;
+}
