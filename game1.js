@@ -26,6 +26,7 @@ function StartBattle() {
         return;
     }
 
+    document.querySelector(".overlay").style.display = "flex";
     document.querySelector(".BattleArea").style.display = "block";
 
     document.querySelector(".P1health").innerText = Hero1 + " HEALTH : " + H1health;

@@ -46,23 +46,26 @@
     <p class="hero1">PLAYER 1 HERO : NOT SELECTED </p>
     <p class="hero2">PLAYER 2 HERO : NOT SELECTED </p>
 
+
+
     <button onclick="StartBattle()"> Start Battle ! </button>
+    <div class="overlay">
+        <div class="BattleArea">
 
-    <div class="BattleArea">
 
+            <p class="P1health"></p>
+            <p class="P2health"></p>
 
-        <p class="P1health"></p>
-        <p class="P2health"></p>
+            <p class="TurnText"></p>
 
-        <p class="TurnText"></p>
+            <button onclick="Attack(15)">Attack 1</button>
+            <button onclick="Attack(25)">Attack 2</button>
+            <button onclick="Attack(35)">Attack 3</button>
 
-        <button onclick="Attack(15)">Attack 1</button>
-        <button onclick="Attack(25)">Attack 2</button>
-        <button onclick="Attack(35)">Attack 3</button>
+            <p class="ActionText"></p>
 
-        <p class="ActionText"></p>
-
-        <p class="Result"></p>
+            <p class="Result"></p>
+        </div>
     </div>
 </body>
 
