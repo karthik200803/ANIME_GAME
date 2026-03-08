@@ -72,3 +72,87 @@ body {
     width: auto;
     height: auto;
 }
+
+
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+    }
+
+    nav{
+        flex-direction:column;
+        align-items:center;
+        gap:10px;
+    }
+
+    /* HERO SELECTION */
+
+    .HeroSelection{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .HeroCard{
+        width:45%;
+        text-align:center;
+    }
+
+    .HeroCard img{
+        width:100%;
+        height:auto;
+    }
+
+    /* BATTLE AREA */
+
+    .BattleArea{
+        width:90%;
+        padding:20px;
+    }
+
+    .hero1,
+    .hero2{
+        font-size:16px;
+        text-align:center;
+    }
+
+    .P1health,
+    .P2health{
+        font-size:14px;
+        text-align:center;
+    }
+
+    .TurnText{
+        font-size:18px;
+        text-align:center;
+    }
+
+    .ActionText{
+        font-size:14px;
+        text-align:center;
+    }
+
+    .Result{
+        font-size:18px;
+        text-align:center;
+    }
+
+    /* ATTACK BUTTONS */
+
+    .AttackButtons{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin-top:15px;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        font-size:15px;
+    }
+
+}
