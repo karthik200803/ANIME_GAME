@@ -62,7 +62,7 @@ body {
 
 .arrow {
     font-size: 35px;
-    /* border: none; */
+    border: none;
     background: none;
     cursor: pointer;
     color: black;
