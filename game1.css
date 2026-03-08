@@ -78,81 +78,97 @@ body {
 
     body{
         padding:10px;
+        font-family:sans-serif;
     }
 
-    nav{
-        flex-direction:column;
-        align-items:center;
-        gap:10px;
-    }
-
-    /* HERO SELECTION */
+    /* HERO SECTION */
 
     .HeroSelection{
         display:flex;
-        flex-direction:row;
-        justify-content:center;
-        flex-wrap:wrap;
-        gap:12px;
+        overflow-x:auto;
+        gap:15px;
+        padding:10px 0;
+        scroll-snap-type:x mandatory;
     }
 
     .HeroCard{
-        width:45%;
+        min-width:140px;
+        background:#111;
+        border-radius:10px;
+        padding:10px;
         text-align:center;
+        scroll-snap-align:center;
     }
 
     .HeroCard img{
         width:100%;
-        height:auto;
+        border-radius:8px;
     }
 
     /* BATTLE AREA */
 
     .BattleArea{
-        width:90%;
+        width:95%;
         padding:20px;
+        border-radius:12px;
+        margin:auto;
     }
 
     .hero1,
     .hero2{
-        font-size:16px;
+        font-size:18px;
         text-align:center;
+        margin-bottom:5px;
     }
 
     .P1health,
     .P2health{
-        font-size:14px;
+        font-size:16px;
         text-align:center;
+        margin-bottom:10px;
     }
 
     .TurnText{
-        font-size:18px;
+        font-size:20px;
         text-align:center;
+        margin-bottom:10px;
+        font-weight:bold;
     }
 
     .ActionText{
-        font-size:14px;
+        font-size:15px;
         text-align:center;
+        margin-top:10px;
     }
 
     .Result{
-        font-size:18px;
+        font-size:22px;
         text-align:center;
+        margin-top:15px;
+        font-weight:bold;
     }
 
     /* ATTACK BUTTONS */
 
     .AttackButtons{
-        display:flex;
-        flex-direction:column;
+        display:grid;
+        grid-template-columns:1fr 1fr;
         gap:10px;
         margin-top:15px;
     }
 
     button{
-        width:100%;
-        padding:12px;
-        font-size:15px;
+        padding:14px;
+        font-size:16px;
+        border-radius:8px;
+        border:none;
+        background:#ff4c4c;
+        color:white;
+        font-weight:bold;
+    }
+
+    button:active{
+        transform:scale(0.95);
     }
 
 }
