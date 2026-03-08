@@ -46,25 +46,25 @@ function Attack(type) {
         return;
     }
 
-    if(type===2){
-        if(currentPlayer===1 && H1PowerPunch<=0){
+    if (type === 2) {
+        if (currentPlayer === 1 && H1PowerPunch <= 0) {
             document.querySelector(".ActionText").innerText = Hero1 + " HAS NO POWER PUNCH LEFT ";
             return;
         }
 
-        else if(currentPlayer===2 && H2PowerPunch<=0){
+        else if (currentPlayer === 2 && H2PowerPunch <= 0) {
             document.querySelector(".ActionText").innerText = Hero2 + " HAS NO POWER PUNCH LEFT ";
             return;
         }
     }
 
-    if(type===3){
-        if(currentPlayer===1 && H1Ability<=0){
+    if (type === 3) {
+        if (currentPlayer === 1 && H1Ability <= 0) {
             document.querySelector(".ActionText").innerText = Hero1 + " HAS NO ABILITY LEFT ";
             return;
         }
 
-        else if(currentPlayer===2 && H2Ability<=0){
+        else if (currentPlayer === 2 && H2Ability <= 0) {
             document.querySelector(".ActionText").innerText = Hero2 + " HAS NO ABILITY LEFT ";
             return;
         }
@@ -153,4 +153,39 @@ function Attack(type) {
 function ExitBattle() {
     document.querySelector(".overlay").style.display = "none";
     document.querySelector(".BattleArea").style.display = "none"
+}
+
+let heroIndex = 0;
+
+function UpdateSlider(){
+
+let track = document.querySelector(".hero-track");
+
+track.style.transform = "translateX(-" + (heroIndex * 240) + "px)";
+}
+
+function NextHero(){
+
+let cards = document.querySelectorAll(".hero-card");
+
+heroIndex++;
+
+if(heroIndex >= cards.length){
+heroIndex = 0;
+}
+
+UpdateSlider();
+}
+
+function PrevHero(){
+
+let cards = document.querySelectorAll(".hero-card");
+
+heroIndex--;
+
+if(heroIndex < 0){
+heroIndex = cards.length - 1;
+}
+
+UpdateSlider();
 }
