@@ -9,21 +9,27 @@ let H2health = 100;
 let H1PowerPunch = 2;
 let H2PowerPunch = 2;
 
-let H1Ability = 1;
-let H2Ability = 1;
+let H1Ability = 0;
+let H2Ability = 0;
 
-function SelectHero(HeroName) {
+let H1Stun = 0;
+let H2Stun = 0;
 
-    if (Hero1 === "") {
-        Hero1 = HeroName;
-        document.querySelector(".hero1").innerText = "PLAYER 1 HERO : " + HeroName;
+let H1Bersek = 0;
+let H2Bersek = 0;
+
+    function SelectHero(HeroName) {
+
+        if (Hero1 === "") {
+            Hero1 = HeroName;
+            document.querySelector(".hero1").innerText = "PLAYER 1 HERO : " + HeroName;
+        }
+
+        else if (Hero2 === "") {
+            Hero2 = HeroName;
+            document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
+        }
     }
-
-    else if (Hero2 === "") {
-        Hero2 = HeroName;
-        document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
-    }
-}
 
 function StartBattle() {
 
@@ -43,6 +49,20 @@ function StartBattle() {
 
 function Attack(type) {
     if (H1health <= 0 || H2health <= 0) {
+        return;
+    }
+
+    if (currentPlayer === 1 && H1Stun > 0) {
+        H1Stun--;
+        document.querySelector(".ActionText").innerText = Hero1 + " IS STUNNED DUE TO THOR'S LIGHTING AND MISSES THE TURN ";
+        currentPlayer = 2;
+        return;
+    }
+
+    if (currentPlayer === 2 && H2Stun > 0) {
+        H1Stun--;
+        document.querySelector(".ActionText").innerText = Hero2 + " IS STUNNED DUE TO THOR'S LIGHTING AND MISSES THE TURN ";
+        currentPlayer = 1;
         return;
     }
 
@@ -69,10 +89,19 @@ function Attack(type) {
             return;
         }
     }
-
-    let RealDamage = CalculateDamage(type)
+    let RealDamage = CalculateDamage(type);
     let DodgeChance = 20;
     let DodgeRoll = Math.floor(Math.random() * 100);
+
+    if (currentPlayer === 1 && H1Bersek > 0) {
+        RealDamage = Math.floor(RealDamage * 1.2);
+        H1Bersek--;
+    }
+
+    if (currentPlayer === 2 && H2Bersek > 0) {
+        RealDamage = Math.floor(RealDamage * 1.2);
+        H2Bersek--;
+    }
 
     if (currentPlayer === 1) {
 
@@ -94,8 +123,10 @@ function Attack(type) {
 
             else if (type === 3) {
                 H1Ability--;
-                document.querySelector(".ActionText").innerText = Hero1 + " USED HIS ABILITY IT DEALS " + RealDamage + " TO " + Hero2;
-                document.querySelector(".Remaining-Atk2").innerText = Hero1 + " REMAINING ABILITY : " + H1Ability;
+
+                if (Hero1 === "THOR"){
+                    none; //here we have to edit tomorrow 
+                }
             }
         }
         currentPlayer = 2;
@@ -157,35 +188,35 @@ function ExitBattle() {
 
 let heroIndex = 0;
 
-function UpdateSlider(){
+function UpdateSlider() {
 
-let track = document.querySelector(".hero-track");
+    let track = document.querySelector(".hero-track");
 
-track.style.transform = "translateX(-" + (heroIndex * 240) + "px)";
+    track.style.transform = "translateX(-" + (heroIndex * 240) + "px)";
 }
 
-function NextHero(){
+function NextHero() {
 
-let cards = document.querySelectorAll(".hero-card");
+    let cards = document.querySelectorAll(".hero-card");
 
-heroIndex++;
+    heroIndex++;
 
-if(heroIndex >= cards.length){
-heroIndex = 0;
+    if (heroIndex >= cards.length) {
+        heroIndex = 0;
+    }
+
+    UpdateSlider();
 }
 
-UpdateSlider();
-}
+function PrevHero() {
 
-function PrevHero(){
+    let cards = document.querySelectorAll(".hero-card");
 
-let cards = document.querySelectorAll(".hero-card");
+    heroIndex--;
 
-heroIndex--;
+    if (heroIndex < 0) {
+        heroIndex = cards.length - 1;
+    }
 
-if(heroIndex < 0){
-heroIndex = cards.length - 1;
-}
-
-UpdateSlider();
+    UpdateSlider();
 }

@@ -11,9 +11,5 @@ function CalculateDamage(type){
         Damage = RandomDmg + 10;
     }
 
-    else if(type === 3){
-        Damage = 30;
-    }
-
     return Damage;
 }
