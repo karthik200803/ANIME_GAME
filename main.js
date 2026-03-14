@@ -18,18 +18,18 @@ let H2Stun = 0;
 let H1Bersek = 0;
 let H2Bersek = 0;
 
-    function SelectHero(HeroName) {
+function SelectHero(HeroName) {
 
-        if (Hero1 === "") {
-            Hero1 = HeroName;
-            document.querySelector(".hero1").innerText = "PLAYER 1 HERO : " + HeroName;
-        }
-
-        else if (Hero2 === "") {
-            Hero2 = HeroName;
-            document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
-        }
+    if (Hero1 === "") {
+        Hero1 = HeroName;
+        document.querySelector(".hero1").innerText = "PLAYER 1 HERO : " + HeroName;
     }
+
+    else if (Hero2 === "") {
+        Hero2 = HeroName;
+        document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
+    }
+}
 
 function StartBattle() {
 
@@ -124,7 +124,7 @@ function Attack(type) {
             else if (type === 3) {
                 H1Ability--;
 
-                if (Hero1 === "THOR"){
+                if (Hero1 === "THOR") {
                     none; //here we have to edit tomorrow 
                 }
             }
