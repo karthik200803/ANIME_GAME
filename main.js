@@ -98,7 +98,7 @@ function Attack(type) {
         RealDamage = Math.floor(RealDamage * 1.2);
         H1Bersek--;
 
-        if(H1Bersek === 0){
+        if (H1Bersek === 0) {
             document.querySelector(".Status").innerText = " WOLVERINE BERSERKER MODE ENDED "
         }
     }
@@ -107,7 +107,7 @@ function Attack(type) {
         RealDamage = Math.floor(RealDamage * 1.2);
         H2Bersek--;
 
-        if(H2Bersek === 0){
+        if (H2Bersek === 0) {
             document.querySelector(".Status").innerText = " WOLVERINE BERSERKER MODE ENDED "
         }
     }
@@ -135,6 +135,7 @@ function Attack(type) {
                 if (Hero1 === "THOR") {
                     let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
                     H2health = H2health - LightingDamage;
+                    alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2);
                     H2Stun = 1;
                     document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
                 }
@@ -142,12 +143,18 @@ function Attack(type) {
                 else if (Hero1 === "WOLVERINE") {
                     let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
                     H1health = BersekHeal + H1health;
+                    alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H1Bersek = 2;
                     document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
                 }
 
                 else if (Hero1 === "VENOM") {
-                    // 
+                    let VenomBite = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
+                    H2health = H2health - VenomBite;
+                    alert(" VENOM USES POISONOUS BITE ");
+                    let VenomHeal = Math.floor(VenomBite / 2);
+                    H1health = VenomHeal + H1health;
+                    document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
         }
@@ -178,6 +185,7 @@ function Attack(type) {
                 if (Hero2 === "THOR") {
                     let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
                     H1health = H1health - LightingDamage;
+                    alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2);
                     H1Stun = 1;
                     document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTNING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
                 }
@@ -185,8 +193,18 @@ function Attack(type) {
                 else if (Hero2 === "WOLVERINE") {
                     let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
                     H2health = BersekHeal + H2health;
+                    alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H2Bersek = 2;
                     document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                }
+
+                else if (Hero2 === "VENOM") {
+                    let VenomBite = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
+                    H1health = H1health - VenomBite;
+                    alert(" VENOM USES POISONOUS BITE ");
+                    let VenomHeal = Math.floor(VenomBite / 2);
+                    H2health = VenomHeal + H2health;
+                    document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
         }

@@ -16,4 +16,4 @@ function CalculateDamage(type) {
     // }
 
     return Damage;
-}
+} 
