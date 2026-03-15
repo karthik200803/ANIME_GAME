@@ -9,8 +9,8 @@ let H2health = 100;
 let H1PowerPunch = 2;
 let H2PowerPunch = 2;
 
-let H1Ability = 0;
-let H2Ability = 0;
+let H1Ability = 1;
+let H2Ability = 1;
 
 let H1Stun = 0;
 let H2Stun = 0;
@@ -60,7 +60,7 @@ function Attack(type) {
     }
 
     if (currentPlayer === 2 && H2Stun > 0) {
-        H1Stun--;
+        H2Stun--;
         document.querySelector(".ActionText").innerText = Hero2 + " IS STUNNED DUE TO THOR'S LIGHTING AND MISSES THE TURN ";
         currentPlayer = 1;
         return;
@@ -125,7 +125,17 @@ function Attack(type) {
                 H1Ability--;
 
                 if (Hero1 === "THOR") {
-                    none; //here we have to edit tomorrow 
+                    let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+                    H2health = H2health - LightingDamage;
+                    H2Stun = 1;
+                    document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
+                }
+
+                else if (Hero1 === "WOLVERINE") {
+                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
+                    H1health = BersekHeal + H1health;
+                    H1Bersek = 2;
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSEKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
                 }
             }
         }
@@ -151,13 +161,27 @@ function Attack(type) {
             }
 
             else if (type === 3) {
+
                 H2Ability--;
-                document.querySelector(".ActionText").innerText = Hero2 + " USED HIS ABILITY IT DEALS " + RealDamage + " TO " + Hero1;
-                document.querySelector(".Remaining-Atk2").innerText = Hero1 + " REMAINING ABILITY : " + H2Ability;
+
+                if (Hero2 === "THOR") {
+                    let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+                    H2health = H2health - LightingDamage;
+                    H1Stun = 1;
+                    document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
+                }
+
+                else if (Hero2 === "WOLVERINE") {
+                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
+                    H1health = BersekHeal + H1health;
+                    H2Bersek = 2;
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSEKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                }
             }
         }
         currentPlayer = 1;
     }
+
     if (H1health < 0) {
         H1health = 0;
     }
