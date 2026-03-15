@@ -45,6 +45,7 @@ function StartBattle() {
     document.querySelector(".P2health").innerText = Hero2 + " HEALTH : " + H2health;
 
     document.querySelector(".TurnText").innerText = "PLAYER 1 TURN";
+    UpdateBtn();
 }
 
 function Attack(type) {
@@ -96,11 +97,19 @@ function Attack(type) {
     if (currentPlayer === 1 && H1Bersek > 0) {
         RealDamage = Math.floor(RealDamage * 1.2);
         H1Bersek--;
+
+        if(H1Bersek === 0){
+            document.querySelector(".Status").innerText = " WOLVERINE BERSERKER MODE ENDED "
+        }
     }
 
     if (currentPlayer === 2 && H2Bersek > 0) {
         RealDamage = Math.floor(RealDamage * 1.2);
         H2Bersek--;
+
+        if(H2Bersek === 0){
+            document.querySelector(".Status").innerText = " WOLVERINE BERSERKER MODE ENDED "
+        }
     }
 
     if (currentPlayer === 1) {
@@ -118,7 +127,6 @@ function Attack(type) {
             else if (type === 2) {
                 H1PowerPunch--;
                 document.querySelector(".ActionText").innerText = Hero1 + " USED SUPER PUNCH ( SHOCK WAVE DEALS EXTRA 10DMG ) IT DEALS " + RealDamage + " TO " + Hero2;
-                document.querySelector(".Remaining-Atk1").innerText = Hero1 + " REMAINING POWER PUNCH : " + H1PowerPunch;
             }
 
             else if (type === 3) {
@@ -135,7 +143,11 @@ function Attack(type) {
                     let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
                     H1health = BersekHeal + H1health;
                     H1Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSEKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                }
+
+                else if (Hero1 === "VENOM") {
+                    // 
                 }
             }
         }
@@ -157,7 +169,6 @@ function Attack(type) {
             else if (type === 2) {
                 H2PowerPunch--;
                 document.querySelector(".ActionText").innerText = Hero2 + " USED POWER PUNCH ( SHOCK WAVE DEALS EXTRA 10DMG ) IT DEALS " + RealDamage + " TO " + Hero1;
-                document.querySelector(".Remaining-Atk1").innerText = Hero2 + " REMAINING POWER PUNCH : " + H2PowerPunch;
             }
 
             else if (type === 3) {
@@ -166,16 +177,16 @@ function Attack(type) {
 
                 if (Hero2 === "THOR") {
                     let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
-                    H2health = H2health - LightingDamage;
+                    H1health = H1health - LightingDamage;
                     H1Stun = 1;
-                    document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
+                    document.querySelector(".ActionText").innerText = " THOR SUMMONS LIGHTNING AND IT DEALS " + LightingDamage + " AND " + Hero2 + " STUNS FOR ONE TURN !!! ";
                 }
 
                 else if (Hero2 === "WOLVERINE") {
-                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
-                    H1health = BersekHeal + H1health;
+                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+                    H2health = BersekHeal + H2health;
                     H2Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSEKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
                 }
             }
         }
@@ -196,12 +207,69 @@ function Attack(type) {
 
     document.querySelector(".TurnText").innerText = "PLAYER " + currentPlayer + " TURN";
 
+    UpdateBtn();
+
     if (H1health === 0) {
         document.querySelector(".Result").innerText = " THE WINNER IS PLAYER 2 !!! ";
     }
 
     if (H2health === 0) {
         document.querySelector(".Result").innerText = " THE WINNER IS PLAYER 1 !!! ";
+    }
+}
+
+function UpdateBtn() {
+
+    let Powerpunch;
+    let Ability;
+    let Hero;
+    let AbilityName;
+
+    if (currentPlayer === 1) {
+        Powerpunch = H1PowerPunch;
+        Ability = H1Ability;
+        Hero = Hero1;
+    }
+
+    else {
+        Powerpunch = H2PowerPunch;
+        Ability = H2Ability;
+        Hero = Hero2;
+    }
+
+    let Powerbtn = document.querySelector(".atk2");
+    let Abilitybtn = document.querySelector(".atk3");
+
+    Powerbtn.innerText = " POWER PUNCH ( " + Powerpunch + " ) "
+
+
+
+    if (Powerpunch === 0) {
+        Powerbtn.disabled = true;
+    }
+    else {
+        Powerbtn.disabled = false;
+    }
+
+    if (Hero === "THOR") {
+        AbilityName = "SUMMON LIGHTNING";
+    }
+
+    else if (Hero === "WOLVERINE") {
+        AbilityName = "BERSERKER MODE";
+    }
+
+    else if (Hero === "VENOM") {
+        AbilityName = "VENOM";
+    }
+
+    Abilitybtn.innerText = AbilityName + " ( " + Ability + " )";
+
+    if (Ability === 0) {
+        Abilitybtn.disabled = true;
+    }
+    else {
+        Abilitybtn.disabled = false;
     }
 }
 
