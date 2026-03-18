@@ -157,6 +157,18 @@ function Attack(type) {
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
+            let p2 = document.querySelector(".P2health");
+
+            p2.classList.add("hit");
+            p2.classList.add("DamageFlash");
+
+            setTimeout(function () {
+                p2.classList.remove("hit");
+            }, 250);
+
+            setTimeout(function(){
+                p2.classList.remove("DamageFlash");
+            }, 200)
         }
         currentPlayer = 2;
     }
@@ -207,10 +219,21 @@ function Attack(type) {
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
+            let p1 = document.querySelector(".P1health");
+
+            p1.classList.add("hit");
+            p1.classList.add("DamageFlash");
+
+            setTimeout(function () {
+                p1.classList.remove("hit");
+            }, 250);
+
+            setTimeout(function(){
+                p1.classList.remove("DamageFlash");
+            }, 200)
         }
         currentPlayer = 1;
     }
-
 
     if (H1health < 0) {
         H1health = 0;
