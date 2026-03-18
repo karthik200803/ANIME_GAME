@@ -157,6 +157,7 @@ body::before {
     height: auto;
 }
 
+<<<<<<< HEAD
 .hit {
     animation: hitImpact 0.25s;
 }
@@ -180,3 +181,16 @@ body::before {
 .DamageFlash {
     color: red;
 }
+=======
+.atk1{
+    display: block;
+}
+
+.atk2{
+    display: block;
+}
+
+.atk3{
+    display: block;
+}
+>>>>>>> c0144e731aa890f40369ccc726c2d22d988691ff
