@@ -56,7 +56,7 @@ body::before {
     padding: 20px;
 }
 
-.hero-selection::before{
+.hero-selection::before {
     content: "";
     position: absolute;
     top: 0;
@@ -65,7 +65,7 @@ body::before {
     height: 100%;
 
     background-image: url("https://i.pinimg.com/1200x/c1/37/1a/c1371a48a64e44d156bb24ed511f3a69.jpg");
-    
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,8 +127,12 @@ body::before {
 
 .Startbtl {
     margin-left: 5px;
+}
+
+.StartBtl {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .overlay {
@@ -157,6 +161,92 @@ body::before {
     height: auto;
 }
 
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.contact {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    background-image: url('https://4kwallpapers.com/images/walls/thumbs_3t/4945.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+}
+
+/* Blur effect over background inside the form */
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* dark overlay */
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.contact h2 {
+    text-align: center;
+    color: whitesmoke;
+    margin-bottom: 20px;
+    /* text-shadow: 2px 2px black; */
+}
+
+.contact label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2C3E50;
+    color: white;
+    resize: none;
+    /* text-shadow: 2px 2px black; */
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: #aaa;
+}
+
+.contact button {
+    margin-top: 20px;
+    background-color: darkslategrey;
+    color: whitesmoke;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    /* text-shadow: 2px 2px black; */
+}
+
+.contact button:hover {
+    background-color: cadetblue;
+}
+
 .hit {
     animation: hitImpact 0.25s;
 }
@@ -180,5 +270,3 @@ body::before {
 .DamageFlash {
     color: red;
 }
-
-

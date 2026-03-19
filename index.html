@@ -61,8 +61,9 @@
     <p class="hero2">PLAYER 2 HERO : NOT SELECTED </p>
 
 
-
-    <button class="Startbtl" onclick="StartBattle()"> Start Battle ! </button>
+    <div class="StartBtl">
+        <button class="Startbtl" onclick="StartBattle()"> Start Battle ! </button>
+    </div>
     <div class="overlay">
         <div class="BattleArea">
 
@@ -80,6 +81,24 @@
             <p class="Status"></p>
             <p class="Result"></p>
             <button ondblclick="ExitBattle()">End Battle</button>
+        </div>
+    </div>
+    <div class="contact-wrapper">
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="email">Enter Email ID:</label>
+                <input type="text" id="email" placeholder="Enter Your Email" />
+
+                <label for="anime-name">Hero You Want:</label>
+                <input type="text" id="anime-name" placeholder="Anime Name" />
+
+                <label for="anime-description">Ability Description (Optional):</label>
+                <textarea id="anime-description" rows="5"
+                    placeholder="Tell us more about the anime you'd like..."></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </body>
