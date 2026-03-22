@@ -1,0 +1,76 @@
+body{
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url("https://i.pinimg.com/736x/44/9e/4d/449e4ddf3d9b8222bbff2c77a24546cb.jpg") center/cover no-repeat;
+
+    filter: blur(6px);
+    transform: scale(1.1);
+
+    z-index: -1;
+}
+
+.nav-bar {
+    color:whitesmoke;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 6px;
+    margin: 3px;
+    padding-bottom: 1px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+.nav-links {
+    display: flex;
+    column-gap: 15px;
+}
+
+.nav-link a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.nav-link a:hover {
+    color: red;
+}
+
+.Abilities_Info{
+    display: flex;
+    margin: 10px;
+    margin-top:20px;
+    column-gap: 16px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.Hero_Card{
+    text-align: center;
+    color: antiquewhite;
+}
+
+.Hero_Card img{
+    height: 220px;
+    width: 220px;
+    border-radius: 5px;
+}
+
+.Hero_Card img:hover{
+    transform: scale(0.9);
+}
+
+.Info{
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    color: azure;
+}

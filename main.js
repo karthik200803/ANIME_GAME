@@ -133,7 +133,7 @@ function Attack(type) {
                 H1Ability--;
 
                 if (Hero1 === "THOR") {
-                    let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+                    let LightingDamage = Math.floor(Math.random() * (35 - 25 + 1)) + 25;
                     H2health = H2health - LightingDamage;
                     alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2 + " ⚡️ ⚡️ ⚡️ ");
                     H2Stun = 1;
@@ -195,7 +195,7 @@ function Attack(type) {
                 H2Ability--;
 
                 if (Hero2 === "THOR") {
-                    let LightingDamage = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+                    let LightingDamage = Math.floor(Math.random() * (35 - 25 + 1)) + 25;
                     H1health = H1health - LightingDamage;
                     alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2 + " ⚡️ ⚡️ ⚡️ ");
                     H1Stun = 1;
