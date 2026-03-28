@@ -95,7 +95,7 @@ function Attack(type) {
     let DodgeRoll = Math.floor(Math.random() * 100);
 
     if (currentPlayer === 1 && H1Bersek > 0) {
-        RealDamage = Math.floor(RealDamage * 1.2);
+        RealDamage = Math.floor(RealDamage * 2);
         H1Bersek--;
 
         if (H1Bersek === 0) {
@@ -104,7 +104,7 @@ function Attack(type) {
     }
 
     if (currentPlayer === 2 && H2Bersek > 0) {
-        RealDamage = Math.floor(RealDamage * 1.2);
+        RealDamage = Math.floor(RealDamage * 2);
         H2Bersek--;
 
         if (H2Bersek === 0) {
@@ -126,14 +126,14 @@ function Attack(type) {
 
             else if (type === 2) {
                 H1PowerPunch--;
-                document.querySelector(".ActionText").innerText = Hero1 + " USED SUPER PUNCH ( SHOCK WAVE DEALS EXTRA 10DMG ) IT DEALS " + RealDamage + " TO " + Hero2;
+                document.querySelector(".ActionText").innerText = Hero1 + " USED SUPER PUNCH ( SHOCK WAVE DEALS +5 DMG ) IT DEALS " + RealDamage + " TO " + Hero2;
             }
 
             else if (type === 3) {
                 H1Ability--;
 
                 if (Hero1 === "THOR") {
-                    let LightingDamage = Math.floor(Math.random() * (35 - 25 + 1)) + 25;
+                    let LightingDamage = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
                     H2health = H2health - LightingDamage;
                     alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2 + " ⚡️ ⚡️ ⚡️ ");
                     H2Stun = 1;
@@ -141,15 +141,15 @@ function Attack(type) {
                 }
 
                 else if (Hero1 === "WOLVERINE") {
-                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 15;
+                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
                     H1health = BersekHeal + H1health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H1Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
                 }
 
                 else if (Hero1 === "VENOM") {
-                    let VenomBite = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
+                    let VenomBite = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
                     H2health = H2health - VenomBite;
                     alert(" VENOM USES POISONOUS BITE ");
                     let VenomHeal = Math.floor(VenomBite / 2);
@@ -187,7 +187,7 @@ function Attack(type) {
 
             else if (type === 2) {
                 H2PowerPunch--;
-                document.querySelector(".ActionText").innerText = Hero2 + " USED POWER PUNCH ( SHOCK WAVE DEALS EXTRA 10DMG ) IT DEALS " + RealDamage + " TO " + Hero1;
+                document.querySelector(".ActionText").innerText = Hero2 + " USED POWER PUNCH ( SHOCK WAVE DEALS +5 DMG ) IT DEALS " + RealDamage + " TO " + Hero1;
             }
 
             else if (type === 3) {
@@ -195,7 +195,7 @@ function Attack(type) {
                 H2Ability--;
 
                 if (Hero2 === "THOR") {
-                    let LightingDamage = Math.floor(Math.random() * (35 - 25 + 1)) + 25;
+                    let LightingDamage = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
                     H1health = H1health - LightingDamage;
                     alert(" THOR SUMMONS LIGHTNING FROM THE SKY INTO " + Hero2 + " ⚡️ ⚡️ ⚡️ ");
                     H1Stun = 1;
@@ -207,11 +207,11 @@ function Attack(type) {
                     H2health = BersekHeal + H2health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H2Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.2 FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
                 }
 
                 else if (Hero2 === "VENOM") {
-                    let VenomBite = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
+                    let VenomBite = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
                     H1health = H1health - VenomBite;
                     alert(" VENOM USES POISONOUS BITE ");
                     let VenomHeal = Math.floor(VenomBite / 2);

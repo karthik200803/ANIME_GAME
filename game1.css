@@ -107,7 +107,7 @@ body::before {
     border: none;
     background: none;
     cursor: pointer;
-    color: black;
+    color:whitesmoke;
     padding-bottom: 55px;
 }
 
@@ -157,6 +157,7 @@ body::before {
     background-color: white;
     width: auto;
     height: auto;
+    z-index: 3;
 }
 
 .contact-wrapper {
@@ -178,7 +179,7 @@ body::before {
     background-position: center;
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    z-index: -1;
 
 }
 
