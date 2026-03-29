@@ -67,34 +67,12 @@ function StartBattle() {
     UpdateBtn();
 }
 
-function UpdateTurnHighlight() {
-    let p1 = document.querySelector(".top");
-    let p2 = document.querySelector(".bottom");
-
-    p1.classList.remove("active-turn");
-    p2.classList.remove("active-turn");
-
-    if (currentPlayer === 1) {
-        p1.classList.add("active-turn");
-    } else {
-        p2.classList.add("active-turn");
-    }
-}
-
-function HitImpact() {
-    let Area = document.querySelector(".BattleArea");
-    Area.classList.add("Shake");
-
-    setTimeout( () =>  {
-        Area.classList.remove("Shake");
-    }, 200);
-}
-
 function Attack(type) {
     if (H1health <= 0 || H2health <= 0) {
         return;
     }
 
+    // THOR ACTIVE ABILITY BLOCK <ACTIVE>
     if (currentPlayer === 1 && H1Stun > 0) {
         H1Stun--;
         document.querySelector(".ActionText").innerText = Hero1 + " IS STUNNED DUE TO THOR'S LIGHTING AND MISSES THE TURN ";
@@ -108,7 +86,9 @@ function Attack(type) {
         currentPlayer = 1;
         return;
     }
+    // THOR ACTIVE ABILITY BLOCK </ACTIVE>
 
+    // CHECKING REMAINING TURN OF POWER PUNCH AND ABILITY
     if (type === 2) {
         if (currentPlayer === 1 && H1PowerPunch <= 0) {
             document.querySelector(".ActionText").innerText = Hero1 + " HAS NO POWER PUNCH LEFT ";
@@ -132,10 +112,13 @@ function Attack(type) {
             return;
         }
     }
+    // CHECKING REMAINING TURN OF POWER PUNCH AND ABILITY
+
     let RealDamage = CalculateDamage(type);
     let DodgeChance = 20;
     let DodgeRoll = Math.floor(Math.random() * 100);
 
+    // WOLVERINE ACTIVE ABILITY BLOCK <ACTIVE>
     if (currentPlayer === 1 && H1Bersek > 0) {
         RealDamage = Math.floor(RealDamage * 2);
         H1Bersek--;
@@ -153,6 +136,7 @@ function Attack(type) {
             document.querySelector(".Status").innerText = " WOLVERINE BERSERKER MODE ENDED "
         }
     }
+    // WOLVERINE ACTIVE ABILITY BLOCK </ACTIVE >
 
     if (currentPlayer === 1) {
 
@@ -172,6 +156,7 @@ function Attack(type) {
                 document.querySelector(".ActionText").innerText = Hero1 + " USED SUPER PUNCH ( SHOCK WAVE DEALS +5 DMG ) IT DEALS " + RealDamage + " TO " + Hero2;
             }
 
+            // ACTIVE ABILITY BLOCK <ACTIVE ABILITY>
             else if (type === 3) {
                 H1Ability--;
 
@@ -200,6 +185,8 @@ function Attack(type) {
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
+            //ACTIVE ABILITY BLOCK </ACTIVE ABILITY>
+
             let p2 = document.querySelector(".P2health");
 
             p2.classList.add("hit");
@@ -233,6 +220,7 @@ function Attack(type) {
                 document.querySelector(".ActionText").innerText = Hero2 + " USED POWER PUNCH ( SHOCK WAVE DEALS +5 DMG ) IT DEALS " + RealDamage + " TO " + Hero1;
             }
 
+            //ACTIVE ABILITY BLOCK <ACTIVE ABILITY>
             else if (type === 3) {
 
                 H2Ability--;
@@ -262,6 +250,8 @@ function Attack(type) {
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
             }
+            //ACTIVE ABILITY BLOCK </ACTIVE ABILITY>
+            
             let p1 = document.querySelector(".P1health");
 
             p1.classList.add("hit");
@@ -302,99 +292,4 @@ function Attack(type) {
     if (H2health === 0) {
         document.querySelector(".Result").innerText = " THE WINNER IS PLAYER 1 !!! ";
     }
-}
-
-function UpdateBtn() {
-
-    let Powerpunch;
-    let Ability;
-    let Hero;
-    let AbilityName;
-
-    if (currentPlayer === 1) {
-        Powerpunch = H1PowerPunch;
-        Ability = H1Ability;
-        Hero = Hero1;
-    }
-
-    else {
-        Powerpunch = H2PowerPunch;
-        Ability = H2Ability;
-        Hero = Hero2;
-    }
-
-    let Powerbtn = document.querySelector(".atk2");
-    let Abilitybtn = document.querySelector(".atk3");
-
-    Powerbtn.innerText = " POWER PUNCH ( " + Powerpunch + " ) "
-
-
-
-    if (Powerpunch === 0) {
-        Powerbtn.disabled = true;
-    }
-    else {
-        Powerbtn.disabled = false;
-    }
-
-    if (Hero === "THOR") {
-        AbilityName = "SUMMON LIGHTNING";
-    }
-
-    else if (Hero === "WOLVERINE") {
-        AbilityName = "BERSERKER MODE";
-    }
-
-    else if (Hero === "VENOM") {
-        AbilityName = "VENOM";
-    }
-
-    Abilitybtn.innerText = AbilityName + " ( " + Ability + " )";
-
-    if (Ability === 0) {
-        Abilitybtn.disabled = true;
-    }
-    else {
-        Abilitybtn.disabled = false;
-    }
-}
-
-function ExitBattle() {
-    document.querySelector(".overlay").style.display = "none";
-    document.querySelector(".BattleArea").style.display = "none"
-}
-
-let heroIndex = 0;
-
-function UpdateSlider() {
-
-    let track = document.querySelector(".hero-track");
-
-    track.style.transform = "translateX(-" + (heroIndex * 240) + "px)";
-}
-
-function NextHero() {
-
-    let cards = document.querySelectorAll(".hero-card");
-
-    heroIndex++;
-
-    if (heroIndex >= cards.length) {
-        heroIndex = 0;
-    }
-
-    UpdateSlider();
-}
-
-function PrevHero() {
-
-    let cards = document.querySelectorAll(".hero-card");
-
-    heroIndex--;
-
-    if (heroIndex < 0) {
-        heroIndex = cards.length - 1;
-    }
-
-    UpdateSlider();
 }
