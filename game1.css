@@ -71,7 +71,7 @@ body::before {
     background-color: rgba(0, 0, 0, 1.5);
     /* dark overlay */
     z-index: -2;
-    border-radius: 10px;   
+    border-radius: 10px;
 }
 
 .hero-slider {
@@ -107,7 +107,7 @@ body::before {
     border: none;
     background: none;
     cursor: pointer;
-    color:whitesmoke;
+    color: whitesmoke;
     padding-bottom: 55px;
 }
 
@@ -160,90 +160,75 @@ body::before {
     z-index: 3;
 }
 
-.contact-wrapper {
+.player {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-    width: 100%;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
 }
 
-.contact {
-    width: 100%;
-    max-width: 500px;
-    padding: 30px;
-    border-radius: 10px;
-    color: white;
-    background-image: url('https://4kwallpapers.com/images/walls/thumbs_3t/4945.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-    z-index: -1;
-
+.player img {
+    height: 100px;
+    width: 100px;
+    /* border-radius: 50%; */
+    border: 2px solid white;
 }
 
-/* Blur effect over background inside the form */
-.contact::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    /* dark overlay */
-    z-index: -1;
-    border-radius: 10px;
+.active-turn img {
+    box-shadow: 0 0 15px red;
+    animation: GlowPluse 1s infinite alternate;
 }
 
-.contact h2 {
-    text-align: center;
-    color: whitesmoke;
-    margin-bottom: 20px;
-    /* text-shadow: 2px 2px black; */
+@keyframes GlowPluse {
+    0% {
+        box-shadow: 0px 0px 5px red;
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0px 0px 15px limegreen;
+        transform: scale(1.1);
+    }
+
+    100% {
+        box-shadow: 0px 0px 25px red;
+        transform: scale(1.2);
+    }
 }
 
-.contact label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
+.top {
+    justify-content: flex-start;
 }
 
-.contact input,
-.contact textarea {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #2C3E50;
-    color: white;
-    resize: none;
-    /* text-shadow: 2px 2px black; */
+.bottom {
+    justify-content: flex-end;
 }
 
-.contact input::placeholder,
-.contact textarea::placeholder {
-    color: #aaa;
+.Shake {
+    animation: ScreenShake 0.3s;
 }
 
-.contact button {
-    margin-top: 20px;
-    background-color: darkslategrey;
-    color: whitesmoke;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    /* text-shadow: 2px 2px black; */
-}
+@keyframes ScreenShake {
+    0% {
+        transform: translate(0, 0);
+    }
 
-.contact button:hover {
-    background-color: cadetblue;
+    25% {
+        transform: translate(5px, -5px);
+    }
+
+    50% {
+        transform: translate(-5px, 5px);
+    }
+
+    75% {
+        transform: translate(5px, 5px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 .hit {

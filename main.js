@@ -38,6 +38,24 @@ function StartBattle() {
         return;
     }
 
+    let P1img = document.querySelector(".P1Img");
+    let P2img = document.querySelector(".P2Img");
+
+    function GetHeroImage(hero) {
+        if (hero === "THOR") {
+            return "https://i.pinimg.com/1200x/f9/8b/a5/f98ba5fb08af2f270a98f37daeaafabb.jpg"
+        }
+        if (hero === "WOLVERINE") {
+            return "https://i.pinimg.com/736x/09/06/a8/0906a83b59374a33b4c7da17c35feb93.jpg"
+        }
+        if (hero === "VENOM") {
+            return "https://cdn.marvel.com/content/2x/venom_2021_1_announcement_coming_this_november.jpg"
+        }
+    }
+
+    P1img.src = GetHeroImage(Hero1);
+    P2img.src = GetHeroImage(Hero2);
+
     document.querySelector(".overlay").style.display = "flex";
     document.querySelector(".BattleArea").style.display = "block";
 
@@ -45,7 +63,31 @@ function StartBattle() {
     document.querySelector(".P2health").innerText = Hero2 + " HEALTH : " + H2health;
 
     document.querySelector(".TurnText").innerText = "PLAYER 1 TURN";
+    UpdateTurnHighlight();
     UpdateBtn();
+}
+
+function UpdateTurnHighlight() {
+    let p1 = document.querySelector(".top");
+    let p2 = document.querySelector(".bottom");
+
+    p1.classList.remove("active-turn");
+    p2.classList.remove("active-turn");
+
+    if (currentPlayer === 1) {
+        p1.classList.add("active-turn");
+    } else {
+        p2.classList.add("active-turn");
+    }
+}
+
+function HitImpact() {
+    let Area = document.querySelector(".BattleArea");
+    Area.classList.add("Shake");
+
+    setTimeout( () =>  {
+        Area.classList.remove("Shake");
+    }, 200);
 }
 
 function Attack(type) {
@@ -120,6 +162,7 @@ function Attack(type) {
 
         else {
             H2health = H2health - RealDamage;
+            HitImpact();
             if (type === 1) {
                 document.querySelector(".ActionText").innerText = Hero1 + " USED PUNCH AND IT DEALS " + RealDamage + " TO " + Hero2;
             }
@@ -166,7 +209,7 @@ function Attack(type) {
                 p2.classList.remove("hit");
             }, 250);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 p2.classList.remove("DamageFlash");
             }, 200)
         }
@@ -180,7 +223,7 @@ function Attack(type) {
 
         else {
             H1health = H1health - RealDamage;
-
+            HitImpact();
             if (type === 1) {
                 document.querySelector(".ActionText").innerText = Hero2 + " USED PUNCH AND IT DEALS " + RealDamage + " TO " + Hero1;
             }
@@ -228,7 +271,7 @@ function Attack(type) {
                 p1.classList.remove("hit");
             }, 250);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 p1.classList.remove("DamageFlash");
             }, 200)
         }
@@ -250,6 +293,7 @@ function Attack(type) {
     document.querySelector(".TurnText").innerText = "PLAYER " + currentPlayer + " TURN";
 
     UpdateBtn();
+    UpdateTurnHighlight();
 
     if (H1health === 0) {
         document.querySelector(".Result").innerText = " THE WINNER IS PLAYER 2 !!! ";

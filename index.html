@@ -67,10 +67,11 @@
     <div class="overlay">
         <div class="BattleArea">
 
-
-            <p class="P1health"></p>
-            <p class="P2health"></p>
-
+            <div class="player top">
+                <img class="P1Img">
+                <p class="P1health"></p>
+            </div>
+            
             <p class="TurnText"></p>
 
             <button class="atk1" onclick="Attack(1)">PUNCH</button>
@@ -78,6 +79,11 @@
             <button class="atk3" onclick="Attack(3)"></button>
 
             <p class="ActionText"></p>
+            
+            <div class="player bottom">
+                <img class="P2Img">
+                <p class="P2health"></p>
+            </div>
             <p class="Status"></p>
             <p class="Result"></p>
             <button ondblclick="ExitBattle()">End Battle</button>
@@ -86,24 +92,6 @@
     <br><br>
     <hr>
     <hr>
-    <div class="contact-wrapper">
-        <div class="contact">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="email">Enter Email ID:</label>
-                <input type="text" id="email" placeholder="Enter Your Email" />
-
-                <label for="anime-name">Hero You Want:</label>
-                <input type="text" id="anime-name" placeholder="Anime Name" />
-
-                <label for="anime-description">Ability Description (Optional):</label>
-                <textarea id="anime-description" rows="5"
-                    placeholder="Tell us more about the anime you'd like..."></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
 </body>
 
 <script src="main.js"></script>
