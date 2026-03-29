@@ -18,6 +18,12 @@ let H2Stun = 0;
 let H1Bersek = 0;
 let H2Bersek = 0;
 
+let H1Charge = 0;
+let H2Charge = 0;
+
+let H1ThorCharge = 0;
+let H2ThorCharge = 0;
+
 function SelectHero(HeroName) {
 
     if (Hero1 === "") {
@@ -26,6 +32,10 @@ function SelectHero(HeroName) {
     }
 
     else if (Hero2 === "") {
+        if (HeroName === Hero1) {
+            alert("Both Player Cannot Choose The Same Hero");
+            return;
+        }
         Hero2 = HeroName;
         document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
     }
@@ -115,6 +125,51 @@ function Attack(type) {
     // CHECKING REMAINING TURN OF POWER PUNCH AND ABILITY
 
     let RealDamage = CalculateDamage(type);
+    // ⚡ THOR PASSIVE (3 TURN STORE → 4TH RELEASE)
+
+    if (currentPlayer === 1 && Hero1 === "THOR") {
+
+        if (H1Charge < 3) {
+            let ChargeGain = Math.floor(Math.random() * 2) + 3; // 3–4
+
+            H1ThorCharge += ChargeGain;
+            H1Charge++;
+
+            document.querySelector(".H1Passive_Status").innerText =
+                "THOR CHARGING SPARKS (+" + ChargeGain + ") TOTAL: " + H1ThorCharge;
+        }
+        else {
+            RealDamage = RealDamage + H1ThorCharge;
+
+            document.querySelector(".H1Passive_Status").innerText =
+                "⚡ THOR RELEASES " + H1ThorCharge + " LIGHTNING DAMAGE!";
+
+            H1ThorCharge = 0;
+            H1Charge = 0;
+        }
+    }
+
+    if (currentPlayer === 2 && Hero2 === "THOR") {
+
+        if (H2Charge < 3) {
+            let ChargeGain = Math.floor(Math.random() * 2) + 3;
+
+            H2ThorCharge += ChargeGain;
+            H2Charge++;
+
+            document.querySelector(".H2Passive_Status").innerText =
+                "THOR CHARGING SPARKS (+" + ChargeGain + ") TOTAL: " + H2ThorCharge;
+        }
+        else {
+            RealDamage = RealDamage + H2ThorCharge;
+
+            document.querySelector(".H2Passive_Status").innerText =
+                "⚡ THOR RELEASES " + H2ThorCharge + " LIGHTNING DAMAGE!";
+
+            H2ThorCharge = 0;
+            H2Charge = 0;
+        }
+    }
     let DodgeChance = 20;
     let DodgeRoll = Math.floor(Math.random() * 100);
 
@@ -251,7 +306,7 @@ function Attack(type) {
                 }
             }
             //ACTIVE ABILITY BLOCK </ACTIVE ABILITY>
-            
+
             let p1 = document.querySelector(".P1health");
 
             p1.classList.add("hit");
