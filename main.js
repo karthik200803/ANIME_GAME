@@ -29,7 +29,7 @@ function SelectHero(HeroName) {
     if (Hero1 === "") {
         Hero1 = HeroName;
         document.querySelector(".hero1").innerText = "PLAYER 1 HERO : " + HeroName;
-        document.querySelector(".hero1").classList.add("selected");
+        document.querySelector(".hero1").classList.add("H1Selected");
     }
 
     else if (Hero2 === "") {
@@ -39,7 +39,7 @@ function SelectHero(HeroName) {
         }
         Hero2 = HeroName;
         document.querySelector(".hero2").innerText = "PLAYER 2 HERO : " + HeroName;
-        document.querySelector(".hero2").classList.add("selected");
+        document.querySelector(".hero2").classList.add("H2Selected");
     }
 }
 

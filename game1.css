@@ -118,8 +118,7 @@ body::before {
 
 .hero1, .hero2 {
     text-align: center;
-    position: relative;
-    left: 38%;
+    display: block;
     color: white;
     font-weight: bold;
     margin: 10px;
@@ -129,7 +128,12 @@ body::before {
     border: 2px solid #444;
     box-shadow: 0 0 10px rgba(0,0,0,0.7);
     transition: 0.3s;
-    max-width:300px;
+    min-width:300px;
+}
+
+.Players{
+    display: flex;
+    justify-content: center;
 }
 
 /* PLAYER 1 STYLE */
@@ -143,8 +147,12 @@ body::before {
 }
 
 /* WHEN SELECTED (you'll toggle later) */
-.selected {
-    box-shadow: 0 0 15px lime;
+.H1Selected {
+    box-shadow: 0 0 15px skyblue;
+}
+
+.H2Selected {
+    box-shadow: 0 0 15px orangered;
 }
 
 .Startbtl button {
