@@ -82,7 +82,8 @@ function UpdateSlider() {
 
     let track = document.querySelector(".hero-track");
 
-    track.style.transform = "translateX(-" + (heroIndex * 240) + "px)";
+    let cardWidth = window.innerWidth <= 768 ? 180 : 240;
+track.style.transform = "translateX(-" + (heroIndex * cardWidth) + "px)";
 }
 
 function NextHero() {
