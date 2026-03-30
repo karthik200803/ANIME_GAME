@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: cursive;
 }
 
 body::before {
@@ -36,42 +37,45 @@ body::before {
 
 }
 
+.nav-bar h1{
+    color: black;
+    text-shadow: 0 0 15px white;
+}
+
 .nav-links {
     display: flex;
     column-gap: 15px;
+    text-shadow: 0 0 15px white;
 }
 
 .nav-link a {
     text-decoration: none;
     cursor: pointer;
-    color: white;
+    color: black;
 }
 
 .nav-link a:hover {
     color: red;
+    text-shadow: 0 0 20px orangered;
 }
 
 .hero-selection {
     color: white;
+    background-color: none;
+    gap: 10px;
     position: relative;
     padding: 20px;
-    background-image: url('https://i.pinimg.com/736x/3e/d0/77/3ed0778c5da274ea7a1620d42cc88fe4.jpg');
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-size: cover;
     background-position: center;
     overflow: hidden;
 }
 
-.hero-selection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 1.5);
-    /* dark overlay */
-    z-index: -2;
-    border-radius: 10px;
+.hero-selection h2 {
+    color: black;
+    text-shadow: 0 0 10px white;
 }
 
 .hero-slider {
@@ -107,24 +111,73 @@ body::before {
     border: none;
     background: none;
     cursor: pointer;
-    color: whitesmoke;
+    color: black;
+    text-shadow: 0 0 10px white;
     padding-bottom: 55px;
 }
 
-.Hero1 {
-    color: white;
-    padding-left: 5px;
+.hero1, .hero2 {
     text-align: center;
+    position: relative;
+    left: 38%;
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #111, #222);
+    border: 2px solid #444;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    transition: 0.3s;
+    max-width:300px;
 }
 
-.Hero2 {
-    color: white;
-    padding-left: 5px;
-    text-align: center;
+/* PLAYER 1 STYLE */
+.hero1 {
+    border-left: 5px solid skyblue;
 }
 
-.Startbtl {
-    margin-left: 5px;
+/* PLAYER 2 STYLE */
+.hero2 {
+    border-left: 5px solid red;
+}
+
+/* WHEN SELECTED (you'll toggle later) */
+.selected {
+    box-shadow: 0 0 15px lime;
+}
+
+.Startbtl button {
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 10px white;
+    /* background: linear-gradient(45deg, #111, #222); */
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+    animation: darkGlow 2s infinite;
+}
+
+/* HOVER */
+.Startbtl button:hover {
+    transform: scale(1.08);
+}
+
+/* CLICK */
+.Startbtl button:active {
+    transform: scale(0.95);
+}
+
+/* SUBTLE GLOW */
+@keyframes darkGlow {
+    0% { box-shadow: 0 0 8px #000; }
+    50% { box-shadow: 0 0 15px grey; }
+    100% { box-shadow: 0 0 8px #000; }
 }
 
 .StartBtl {
