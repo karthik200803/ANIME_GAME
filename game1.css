@@ -335,44 +335,38 @@ body::before {
 
 @media (max-width: 768px) {
 
-    /* HERO TEXT FIX */
-    .players {
-        flex-direction: column;
+    .hero-slider {
+        display: flex;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 5px;
     }
 
-    .hero1, .hero2 {
-        width: 90%;
-        font-size: 14px;
+    .slider-window {
+        width: 180px;
+        overflow: hidden;
+    }
+
+    .hero-track {
+        display: flex;
+    }
+
+    .hero-card {
+        min-width: 180px;
         text-align: center;
     }
 
-    /* HERO SELECTION BOX */
-    .hero-selection {
-        padding: 15px;
-    }
-
-    /* SLIDER FIX */
-    .slider-window {
-        width: 200px;
-    }
-
     .hero-card img {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
     }
 
-    /* ARROWS ADJUST */
+    /* 🔥 ARROW FIX */
     .arrow {
-        font-size: 25px;
-        padding: 0 10px;
-    }
-
-    /* START BUTTON */
-    .Startbtl button {
-        width: 80%;
-        font-size: 16px;
+        font-size: 22px;
+        padding: 0;
+        margin: 0;
+        width: 30px;
     }
 
 }
