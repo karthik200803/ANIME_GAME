@@ -69,9 +69,16 @@
 
             <div class="player top">
                 <img class="P1Img">
-                <p class="P1health"></p>
+                <!-- <p class="P1health"></p> -->
+                <div class="player1">
+                    <p class="P1health"></p>
+                    <div class="health-bar">
+                        <div class="health-fill P1bar"></div>
+                    </div>
+                </div>
+                <p class="H1Passive_Status"></p>
             </div>
-            
+
             <p class="TurnText"></p>
 
             <button class="atk1" onclick="Attack(1)">PUNCH</button>
@@ -79,13 +86,20 @@
             <button class="atk3" onclick="Attack(3)"></button>
 
             <p class="ActionText"></p>
-            
+
             <div class="player bottom">
                 <img class="P2Img">
-                <p class="P2health"></p>
+                <!-- <p class="P2health"></p> -->
+                <div class="player2">
+                    <p class="P2health"></p>
+                    <div class="health-bar">
+                        <div class="health-fill P2bar"></div>
+                    </div>
+                </div>
+                <p class="H2Passive_Status"></p>
             </div>
-            <p class="H1Passive_Status"></p>
-            <p class="H2Passive_Status"></p>
+
+
             <p class="Status"></p>
             <p class="Result"></p>
             <button ondblclick="ExitBattle()">End Battle</button>

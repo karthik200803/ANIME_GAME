@@ -125,8 +125,8 @@ function Attack(type) {
     // CHECKING REMAINING TURN OF POWER PUNCH AND ABILITY
 
     let RealDamage = CalculateDamage(type);
-    // ⚡ THOR PASSIVE (3 TURN STORE → 4TH RELEASE)
 
+    // THOR PASSIVE ABILITY (3 TURN STORE → 4TH RELEASE)
     if (currentPlayer === 1 && Hero1 === "THOR") {
 
         if (H1Charge < 3) {
@@ -170,8 +170,24 @@ function Attack(type) {
             H2Charge = 0;
         }
     }
-    let DodgeChance = 20;
-    let DodgeRoll = Math.floor(Math.random() * 100);
+    // THOR PASSIVE ABILITY (3 TURN STORE → 4TH RELEASE)
+
+    // WOLVERINE PASSIVE ABILITY (REGENERATION)
+    if (currentPlayer === 1 && Hero1 === "WOLVERINE") {
+        if (H1health < 100) {
+            let WolHeal = Math.floor(Math.random() * 3) + 1;
+            H1health = H1health + WolHeal;
+            document.querySelector(".H1Passive_Status").innerText = " WOLVERINE REGENERATES " + WolHeal + " HP "
+        }
+    }
+    if (currentPlayer === 2 && Hero2 === "WOLVERINE") {
+        if (H2health < 100) {
+            let WolHeal = Math.floor(Math.random() * 3) + 1;
+            H2health = H2health + WolHeal;
+            document.querySelector(".H2Passive_Status").innerText = " WOLVERINE REGENERATES " + WolHeal + " HP "
+        }
+    }
+    // WOLVERINE PASSIVE ABILITY (/REGENERATION)
 
     // WOLVERINE ACTIVE ABILITY BLOCK <ACTIVE>
     if (currentPlayer === 1 && H1Bersek > 0) {
@@ -193,6 +209,9 @@ function Attack(type) {
     }
     // WOLVERINE ACTIVE ABILITY BLOCK </ACTIVE >
 
+    let DodgeChance = 20;
+    let DodgeRoll = Math.floor(Math.random() * 100);
+
     if (currentPlayer === 1) {
 
         if (DodgeRoll < DodgeChance) {
@@ -200,8 +219,18 @@ function Attack(type) {
         }
 
         else {
+            // VENOM PASSIVE ABILITY ( REDUESED DAMAGE )
+            if (Hero2 === "VENOM") {
+                let OriginalDamage = RealDamage;
+                let SymbioteShield = Math.floor(RealDamage * 0.2);
+                RealDamage = RealDamage - SymbioteShield;
+                document.querySelector(".H2Passive_Status").innerText = " VENOM'S SYMBIOTE SHIELD REDUSED " + SymbioteShield + " FROM " + OriginalDamage + " DAMAGE TOTAL DAMAGE : " + RealDamage;
+            }
+            // VENOM PASSIVE ABILITY ( REDUESED DAMAGE )
+
             H2health = H2health - RealDamage;
             HitImpact();
+
             if (type === 1) {
                 document.querySelector(".ActionText").innerText = Hero1 + " USED PUNCH AND IT DEALS " + RealDamage + " TO " + Hero2;
             }
@@ -224,8 +253,8 @@ function Attack(type) {
                 }
 
                 else if (Hero1 === "WOLVERINE") {
-                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
-                    H1health = BersekHeal + H1health;
+                    // let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+                    // H1health = BersekHeal + H1health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H1Bersek = 2;
                     document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
@@ -264,8 +293,18 @@ function Attack(type) {
         }
 
         else {
+            // VENOM PASSIVE ABILITY ( REDUESED DAMAGE )
+            if (Hero1 === "VENOM") {
+                let OriginalDamage = RealDamage;
+                let SymbioteShield = Math.floor(RealDamage * 0.2);
+                RealDamage = RealDamage - SymbioteShield;
+                document.querySelector(".H1Passive_Status").innerText = " VENOM'S SYMBIOTE SHIELD REDUSED " + SymbioteShield + " FROM " + OriginalDamage + " DAMAGE TOTAL DAMAGE : " + RealDamage;
+            }
+            // VENOM PASSIVE ABILITY ( REDUESED DAMAGE )
+
             H1health = H1health - RealDamage;
             HitImpact();
+
             if (type === 1) {
                 document.querySelector(".ActionText").innerText = Hero2 + " USED PUNCH AND IT DEALS " + RealDamage + " TO " + Hero1;
             }
@@ -289,8 +328,8 @@ function Attack(type) {
                 }
 
                 else if (Hero2 === "WOLVERINE") {
-                    let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
-                    H2health = BersekHeal + H2health;
+                    // let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+                    // H2health = BersekHeal + H2health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H2Bersek = 2;
                     document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
@@ -334,6 +373,13 @@ function Attack(type) {
     document.querySelector(".P1health").innerText = Hero1 + " HEALTH : " + H1health;
 
     document.querySelector(".P2health").innerText = Hero2 + " HEALTH : " + H2health;
+
+    // update health bars
+    let P1percent = (H1health / 100) * 100;
+    let P2percent = (H2health / 100) * 100;
+
+    document.querySelector(".P1bar").style.width = P1percent + "%";
+    document.querySelector(".P2bar").style.width = P2percent + "%";
 
     document.querySelector(".TurnText").innerText = "PLAYER " + currentPlayer + " TURN";
 
