@@ -191,7 +191,7 @@ function Attack(type) {
 
     // WOLVERINE ACTIVE ABILITY BLOCK <ACTIVE>
     if (currentPlayer === 1 && H1Bersek > 0) {
-        RealDamage = Math.floor(RealDamage * 2);
+        RealDamage = Math.floor(RealDamage * 1.5);
         H1Bersek--;
 
         if (H1Bersek === 0) {
@@ -200,7 +200,7 @@ function Attack(type) {
     }
 
     if (currentPlayer === 2 && H2Bersek > 0) {
-        RealDamage = Math.floor(RealDamage * 2);
+        RealDamage = Math.floor(RealDamage * 1.5);
         H2Bersek--;
 
         if (H2Bersek === 0) {
@@ -253,11 +253,11 @@ function Attack(type) {
                 }
 
                 else if (Hero1 === "WOLVERINE") {
-                    // let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
-                    // H1health = BersekHeal + H1health;
+                    let BersekHeal = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+                    H1health = BersekHeal + H1health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H1Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.5 FOR 2 TURNS ";
                 }
 
                 else if (Hero1 === "VENOM") {
@@ -328,11 +328,11 @@ function Attack(type) {
                 }
 
                 else if (Hero2 === "WOLVERINE") {
-                    // let BersekHeal = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
-                    // H2health = BersekHeal + H2health;
+                    let BersekHeal = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+                    H2health = BersekHeal + H2health;
                     alert(" WOLVERINE ENTERED BERSERKER MODE ");
                     H2Bersek = 2;
-                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST 2X FOR 2 TURNS ";
+                    document.querySelector(".ActionText").innerText = " WOLVERINE ENTERED BERSERKER MODE AND HEALS " + BersekHeal + " HP AND ATTACK BOOST X1.5 FOR 2 TURNS ";
                 }
 
                 else if (Hero2 === "VENOM") {
