@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: cursive;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -330,4 +331,48 @@ body::before {
 
 .DamageFlash {
     color: red;
+}
+
+@media (max-width: 768px) {
+
+    /* HERO TEXT FIX */
+    .players {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero1, .hero2 {
+        width: 90%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* HERO SELECTION BOX */
+    .hero-selection {
+        padding: 15px;
+    }
+
+    /* SLIDER FIX */
+    .slider-window {
+        width: 200px;
+    }
+
+    .hero-card img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* ARROWS ADJUST */
+    .arrow {
+        font-size: 25px;
+        padding: 0 10px;
+    }
+
+    /* START BUTTON */
+    .Startbtl button {
+        width: 80%;
+        font-size: 16px;
+    }
+
 }
