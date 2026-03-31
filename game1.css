@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
     padding: 0;
     margin: 0;
     font-family: 'Orbitron', sans-serif;
@@ -6,7 +7,7 @@ html,body {
     overflow-x: hidden;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -43,7 +44,7 @@ body::before {
 
 }
 
-.nav-bar h1{
+.nav-bar h1 {
     color: black;
     text-shadow: 0 0 15px white;
 }
@@ -122,9 +123,9 @@ body::before {
     padding-bottom: 55px;
 }
 
-.hero1, .hero2 {
+.hero1,
+.hero2 {
     text-align: center;
-    display: block;
     color: white;
     font-weight: bold;
     margin: 10px;
@@ -132,14 +133,15 @@ body::before {
     border-radius: 8px;
     background: linear-gradient(45deg, #111, #222);
     border: 2px solid #444;
-    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     transition: 0.3s;
-    min-width:300px;
+    min-width: 300px;
 }
 
-.Players{
+.Players {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* PLAYER 1 STYLE */
@@ -172,7 +174,7 @@ body::before {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
     animation: darkGlow 2s infinite;
 }
@@ -189,9 +191,17 @@ body::before {
 
 /* SUBTLE GLOW */
 @keyframes darkGlow {
-    0% { box-shadow: 0 0 8px #000; }
-    50% { box-shadow: 0 0 15px grey; }
-    100% { box-shadow: 0 0 8px #000; }
+    0% {
+        box-shadow: 0 0 8px #000;
+    }
+
+    50% {
+        box-shadow: 0 0 15px grey;
+    }
+
+    100% {
+        box-shadow: 0 0 8px #000;
+    }
 }
 
 .StartBtl {
@@ -302,6 +312,7 @@ body::before {
     width: 200px;
     height: 15px;
     background: #333;
+    box-shadow: 0 0 15px limegreen;
     border-radius: 10px;
     overflow: hidden;
     margin: 5px auto;
@@ -340,8 +351,10 @@ body::before {
 
 @media (max-width: 768px) {
 
-    html, body {
-        overflow-x: hidden; /* 🔥 MAIN FIX */
+    html,
+    body {
+        overflow-x: hidden;
+        /* 🔥 MAIN FIX */
     }
 
     .hero-slider {
@@ -349,13 +362,15 @@ body::before {
         align-items: center;
         justify-content: center;
         gap: 5px;
-        position: relative; /* needed for arrows */
+        position: relative;
+        /* needed for arrows */
     }
 
     .slider-window {
         width: 180px;
         overflow: hidden;
-        margin: auto; /* center fix */
+        margin: auto;
+        /* center fix */
     }
 
     .hero-track {
@@ -365,7 +380,8 @@ body::before {
 
     .hero-card {
         min-width: 180px;
-        flex-shrink: 0; /* 🔥 prevents breaking */
+        flex-shrink: 0;
+        /* 🔥 prevents breaking */
         text-align: center;
     }
 
@@ -381,7 +397,7 @@ body::before {
         transform: translateY(-50%);
         font-size: 22px;
         width: 30px;
-        color: white;
+        color: black;
     }
 
     .arrow.left {
@@ -393,7 +409,8 @@ body::before {
     }
 
     /* 🔥 PLAYER TEXT FIX */
-    .hero1, .hero2 {
+    .hero1,
+    .hero2 {
         text-align: center;
         width: 90%;
         margin: 5px auto;
@@ -401,4 +418,73 @@ body::before {
         word-wrap: break-word;
     }
 
+    @media (max-width: 768px) {
+
+        .BattleArea {
+            width: 90%;
+            padding: 15px;
+        }
+
+        .player {
+            flex-direction: column;
+            /* stack image + info */
+            gap: 8px;
+        }
+
+        .Battle_core {
+            border: solid 1px;
+            margin: 4px;
+            box-shadow: 0 0 15px black;
+            animation: Action 2s infinite alternate;
+        }
+
+        @keyframes Action {
+            0% {
+                box-shadow: 0 0 10px white;
+                transform: scale(1);
+            }
+
+            25%{
+                box-shadow: 0 0 15px grey;
+                transform: scale(1.02);
+            }
+
+            50%{
+                box-shadow:  0 0 20px black;
+                transform: scale(1.05);
+            }
+
+            75%{
+                box-shadow: 0 0 15px grey;
+                transform: scale(1.02);
+            }
+
+            100%{
+                box-shadow: 0 0 10px white;
+                transform: scale(1);
+            }
+        }
+
+        .player img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .health-bar {
+            width: 150px;
+            /* smaller but same style */
+            height: 12px;
+        }
+
+        .top {
+            justify-content: center;
+            /* avoid side overflow */
+        }
+
+        .bottom {
+            justify-content: center;
+            /* same here */
+        }
+
+    }
 }

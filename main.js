@@ -132,7 +132,7 @@ function Attack(type) {
     if (currentPlayer === 1 && Hero1 === "THOR") {
 
         if (H1Charge < 3) {
-            let ChargeGain = Math.floor(Math.random() * 2) + 3; // 3–4
+            let ChargeGain = Math.floor(Math.random() * (3 - 1 + 1)) + 1; // 3–4
 
             H1ThorCharge += ChargeGain;
             H1Charge++;
@@ -142,7 +142,7 @@ function Attack(type) {
         }
         else {
             RealDamage = RealDamage + H1ThorCharge;
-
+            
             document.querySelector(".H1Passive_Status").innerText =
                 "⚡ THOR RELEASES " + H1ThorCharge + " LIGHTNING DAMAGE!";
 
