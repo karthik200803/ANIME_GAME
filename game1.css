@@ -340,24 +340,32 @@ body::before {
 
 @media (max-width: 768px) {
 
+    html, body {
+        overflow-x: hidden; /* 🔥 MAIN FIX */
+    }
+
     .hero-slider {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 5px;
+        position: relative; /* needed for arrows */
     }
 
     .slider-window {
         width: 180px;
         overflow: hidden;
+        margin: auto; /* center fix */
     }
 
     .hero-track {
         display: flex;
+        transition: transform 0.6s ease;
     }
 
     .hero-card {
         min-width: 180px;
+        flex-shrink: 0; /* 🔥 prevents breaking */
         text-align: center;
     }
 
@@ -366,12 +374,31 @@ body::before {
         height: 160px;
     }
 
-    /* 🔥 ARROW FIX */
+    /* 🔥 ARROW FIX (better positioning) */
     .arrow {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
         font-size: 22px;
-        padding: 0;
-        margin: 0;
         width: 30px;
+        color: white;
+    }
+
+    .arrow.left {
+        left: 0;
+    }
+
+    .arrow.right {
+        right: 0;
+    }
+
+    /* 🔥 PLAYER TEXT FIX */
+    .hero1, .hero2 {
+        text-align: center;
+        width: 90%;
+        margin: 5px auto;
+        font-size: 14px;
+        word-wrap: break-word;
     }
 
 }
