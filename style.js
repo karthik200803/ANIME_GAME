@@ -66,6 +66,10 @@ function UpdateBtn() {
         AbilityName = "VENOM";
     }
 
+    else if (Hero === "DOCTOR STRANGE") {
+        AbilityName = "EYE OF AGAMOTTO";
+    }
+
     Abilitybtn.innerText = AbilityName + " ( " + Ability + " )";
 
     if (Ability === 0) {

@@ -30,6 +30,18 @@ let H2Damagestored = 0;
 let H1HasStored = false;
 let H2HasStored = false;
 
+let H1LoopActive = false;
+let H2LoopActive = false;
+
+let H1LoopTurns = 0;
+let H2LoopTurns = 0;
+
+let H1SavedHp = 0;
+let H2SavedHp = 0;
+
+let H1EnemyAbilityUsed = false;
+let H2EnemyAbilityUsed = false;
+
 function SelectHero(HeroName) {
 
     if (Hero1 === "") {
@@ -205,7 +217,7 @@ function Attack(type) {
         let Portal = Math.floor(Math.random() * 100);
 
         if (Portal < 25) {
-            H1Damagestored = RealDamage;
+            H1Damagestored = Math.floor(RealDamage / 2);
             H1HasStored = true;
             document.querySelector(".H1Passive_Status").innerText = Hero1 + " TRAPS THE ATTACK IN A PORTAL 🕳️ ";
         }
@@ -218,7 +230,7 @@ function Attack(type) {
         let Portal = Math.floor(Math.random() * 100);
 
         if (Portal < 25) {
-            H2Damagestored = RealDamage;
+            H2Damagestored = RealDamage / 2;
             H2HasStored = true;
             document.querySelector(".H2Passive_Status").innerText = Hero2 + " TRAPS THE ATTACK IN A PORTAL 🕳️ ";
         }
@@ -299,7 +311,14 @@ function Attack(type) {
 
             // ACTIVE ABILITY BLOCK <ACTIVE ABILITY>
             else if (type === 3) {
+
                 H1Ability--;
+
+                if (currentPlayer === 1) {
+                    H2EnemyUsedAbility = true;
+                } else {
+                    H1EnemyUsedAbility = true;
+                }
 
                 if (Hero1 === "THOR") {
                     let LightingDamage = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
@@ -324,6 +343,15 @@ function Attack(type) {
                     let VenomHeal = Math.floor(VenomBite / 2);
                     H1health = VenomHeal + H1health;
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
+                }
+
+                else if (Hero1 === "DOCTOR STRANGE") {
+                    H1LoopActive = true;
+                    H1LoopTurns = 2;
+                    H1SavedHp = H1health;
+                    H1EnemyAbilityUsed = false;
+
+                    document.querySelector(".ActionText").innerText = Hero1 + " USES PUNCH AND IT DEALS 7 DMG TO " + Hero2;
                 }
             }
             //ACTIVE ABILITY BLOCK </ACTIVE ABILITY>
@@ -376,6 +404,13 @@ function Attack(type) {
 
                 H2Ability--;
 
+                if (currentPlayer === 1) {
+                    H2EnemyUsedAbility = true;
+                }
+                else {
+                    H1EnemyUsedAbility = true;
+                }
+
                 if (Hero2 === "THOR") {
                     let LightingDamage = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
                     H1health = H1health - LightingDamage;
@@ -400,6 +435,15 @@ function Attack(type) {
                     H2health = VenomHeal + H2health;
                     document.querySelector(".ActionText").innerText = " VENOM USES VENOM BITE AND IT DEAL " + VenomBite + " AND HEALS HALF OF THE DAMAGE "
                 }
+
+                else if (Hero2 === "DOCTOR STRANGE") {
+                    H2LoopActive = true;
+                    H2LoopTurns = 2;
+                    H2SavedHp = H2health;
+                    H2EnemyAbilityUsed = false;
+
+                    document.querySelector(".ActionText").innerText = Hero2 + " USES PUNCH AND IT DEALS 7 DMG TO " + Hero1;
+                }
             }
             //ACTIVE ABILITY BLOCK </ACTIVE ABILITY>
 
@@ -418,6 +462,54 @@ function Attack(type) {
         }
         currentPlayer = 1;
     }
+
+    //DOCTOR STRANGE ACTIVE ABILITY (TIME STONE)
+    if (currentPlayer === 1 && H1LoopActive) {
+        H1health = H1SavedHp;
+        H1LoopTurns--;
+
+        document.querySelector(".H1DrActive_Status").innerText = " TIME REWINDS ⏰ ";
+
+        if (H1LoopTurns === 0) {
+            H1LoopActive = false;
+
+            if (!H1EnemyAbilityUsed) {
+                let AbilityErased = Math.floor(Math.random() * 100);
+
+                if (AbilityErased < 40) {
+                    H2Ability = 0;
+                    document.querySelector(".H1DrActive_Status").innerText = Hero2 + " 'S ABILITY WAS VANISHED BY DOCTOR STRANGE ";
+                }
+                else {
+                    document.querySelector(".H1DrActive_Status").innerText = " DOCTOR STRANGE FAILED TO VANISH ABILITY OF " + Hero2;
+                }
+            }
+        }
+
+    }
+    if (currentPlayer === 2 && H2LoopActive) {
+        H2health = H2SavedHp;
+        H2LoopTurns--;
+
+        document.querySelector(".H2DrActive_Status").innerText = " TIME REWINDS ⏰ ";
+
+        if (H2LoopTurns === 0) {
+            H2LoopActive = false;
+
+            if (!H2EnemyAbilityUsed) {
+                let AbilityErased = Math.floor(Math.random() * 100);
+
+                if (AbilityErased < 40) {
+                    H1Ability = 0;
+                    document.querySelector(".H2DrActive_Status").innerText = Hero1 + " 'S ABILITY WAS VANISHED BY DOCTOR STRANGE ";
+                }
+                else {
+                    document.querySelector(".H2DrActive_Status").innerText = " DOCTOR STRANGE FAILED TO VANISH ABILITY OF " + Hero1;
+                }
+            }
+        }
+    }
+    //DOCTOR STRANGE ACTIVE ABILITY (TIME STONE)
 
     if (H1health < 0) {
         H1health = 0;
