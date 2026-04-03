@@ -229,6 +229,19 @@ body::before {
 
 }
 
+.overlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    overflow-y: auto;   /* 🔥 ADD THIS */
+    padding: 10px;      /* optional spacing */
+
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .BattleArea {
     display: none;
     text-align: center;
@@ -238,8 +251,12 @@ body::before {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     background-color: white;
     width: auto;
-    height: auto;
     z-index: 3;
+}
+
+.BattleArea {
+    max-height: 100%;   /* 🔥 ADD */
+    overflow-y: auto;   /* 🔥 ADD */
 }
 
 .player {
@@ -442,6 +459,15 @@ body::before {
             box-shadow: 0 0 15px black;
             animation: Action 2s infinite alternate;
         }
+
+.overlay {
+        align-items: flex-start; /* 🔥 instead of center */
+    }
+
+    .BattleArea {
+        width: 95%;
+        margin: auto;
+    }
 
         @keyframes Action {
             0% {
