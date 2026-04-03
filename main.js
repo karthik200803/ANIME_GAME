@@ -24,6 +24,12 @@ let H2Charge = 0;
 let H1ThorCharge = 0;
 let H2ThorCharge = 0;
 
+let H1Damagestored = 0;
+let H2Damagestored = 0;
+
+let H1HasStored = false;
+let H2HasStored = false;
+
 function SelectHero(HeroName) {
 
     if (Hero1 === "") {
@@ -62,6 +68,9 @@ function StartBattle() {
         }
         if (hero === "VENOM") {
             return "https://cdn.marvel.com/content/2x/venom_2021_1_announcement_coming_this_november.jpg"
+        }
+        if (hero === "DOCTOR STRANGE") {
+            return "https://i.pinimg.com/736x/68/de/67/68de67d0e7e29749470a3e66d9e20248.jpg"
         }
     }
 
@@ -142,7 +151,7 @@ function Attack(type) {
         }
         else {
             RealDamage = RealDamage + H1ThorCharge;
-            
+
             document.querySelector(".H1Passive_Status").innerText =
                 "⚡ THOR RELEASES " + H1ThorCharge + " LIGHTNING DAMAGE!";
 
@@ -190,6 +199,52 @@ function Attack(type) {
         }
     }
     // WOLVERINE PASSIVE ABILITY (/REGENERATION)
+
+    // DR STRANGE PASSIVE ABILITY (PORTAL TRAP)
+    if (currentPlayer === 2 && Hero1 === "DOCTOR STRANGE" && !H1HasStored) {
+        let Portal = Math.floor(Math.random() * 100);
+
+        if (Portal < 25) {
+            H1Damagestored = RealDamage;
+            H1HasStored = true;
+            document.querySelector(".H1Passive_Status").innerText = Hero1 + " TRAPS THE ATTACK IN A PORTAL 🕳️ ";
+        }
+        else {
+            document.querySelector(".H1Passive_Status").innerText = Hero1 + " FAILED TO OPEN A PORTAL ";
+        }
+    }
+
+    if (currentPlayer === 1 && Hero2 === "DOCTOR STRANGE" && !H2HasStored) {
+        let Portal = Math.floor(Math.random() * 100);
+
+        if (Portal < 25) {
+            H2Damagestored = RealDamage;
+            H2HasStored = true;
+            document.querySelector(".H2Passive_Status").innerText = Hero2 + " TRAPS THE ATTACK IN A PORTAL 🕳️ ";
+        }
+        else {
+            document.querySelector(".H2Passive_Status").innerText = Hero2 + " FAILED TO OPEN A PORTAL ";
+        }
+    }
+
+    if (currentPlayer === 1 && Hero1 === "DOCTOR STRANGE" && H1HasStored) {
+        RealDamage = RealDamage + H1Damagestored;
+
+        document.querySelector(".H1Passive_Status").innerText = Hero1 + " RELEASED THE TRAPPED ATTACK " + H1Damagestored + " ON " + Hero2;
+
+        H1Damagestored = 0;
+        H1HasStored = false;
+    }
+
+    if (currentPlayer === 2 && Hero2 === "DOCTOR STRANGE" && H2HasStored) {
+        RealDamage = RealDamage + H2Damagestored;
+
+        document.querySelector(".H2Passive_Status").innerText = Hero2 + " RELEASED THE TRAPPED ATTACK " + H2Damagestored + " ON " + Hero1;
+
+        H2Damagestored = 0;
+        H2HasStored = false;
+    }
+    // DR STRANGE PASSIVE ABILITY (PORTAL TRAP)
 
     // WOLVERINE ACTIVE ABILITY BLOCK <ACTIVE>
     if (currentPlayer === 1 && H1Bersek > 0) {

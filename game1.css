@@ -46,13 +46,13 @@ body::before {
 
 .nav-bar h1 {
     color: black;
-    text-shadow: 0 0 15px white;
+    text-shadow: 0 0 15px red;
 }
 
 .nav-links {
     display: flex;
     column-gap: 15px;
-    text-shadow: 0 0 15px white;
+    text-shadow: 0 0 20px red;
 }
 
 .nav-link a {
@@ -82,7 +82,12 @@ body::before {
 
 .hero-selection h2 {
     color: black;
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 15px red;
+}
+
+.hero-selection p {
+    color:black;
+    text-shadow: 0 0 15px red;
 }
 
 .hero-slider {
@@ -168,7 +173,7 @@ body::before {
     font-size: 18px;
     font-weight: bold;
     color: black;
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 15px red;
     /* background: linear-gradient(45deg, #111, #222); */
     background: transparent;
     border: none;

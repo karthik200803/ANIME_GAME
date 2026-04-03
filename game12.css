@@ -41,16 +41,24 @@ body::before {
 .nav-links {
     display: flex;
     gap: 15px;
+    color: black;
+    text-shadow: 0 0 15px red;
+}
+
+.nav-bar h1 {
+    color: black;
+    text-shadow: 0 0 15px red;
 }
 
 .nav-link a {
     text-decoration: none;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 
 .nav-link a:hover {
-    color: red;
+    color:red;
+    text-shadow: 0 0 15px white;
 }
 
 /* HERO CARD SECTION */
@@ -63,7 +71,8 @@ body::before {
     border-radius: 15px;
     /* background: linear-gradient(135deg, #1e1e1e, #2c2c2c); */
     color: white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    text-shadow: 0 0 15px black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     transition: transform 0.3s ease;
 }
 
@@ -89,9 +98,9 @@ body::before {
 }
 
 .Hero_Card p {
-    color:black; 
+    color: black;
     margin-top: 10px;
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 15px red;
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -113,10 +122,12 @@ body::before {
     color: #00f7ff;
     text-shadow: 0 0 10px #00f7ff;
 }
+
 .InfoW h2 {
     color: #ffd000;
     text-shadow: 0 0 10px #ffd000;
 }
+
 .InfoV h2 {
     color: #8a2be2;
     text-shadow: 0 0 10px #8a2be2;
@@ -124,24 +135,29 @@ body::before {
 
 /* HERO COLORS */
 .Abilities_Info:nth-child(2) {
-    border-left: 5px solid #00f7ff; /* THOR */
+    border-left: 5px solid #00f7ff;
+    /* THOR */
 }
 
 .Abilities_Info:nth-child(3) {
-    border-left: 5px solid #ffd000; /* WOLVERINE */
+    border-left: 5px solid #ffd000;
+    /* WOLVERINE */
 }
 
 .Abilities_Info:nth-child(4) {
-    border-left: 5px solid #8a2be2; /* VENOM */
+    border-left: 5px solid #8a2be2;
+    /* VENOM */
 }
 
 /* EXTRA GLOW TEXT */
 .InfoT h2::after {
     content: " ⚡";
 }
+
 .InfoW h2::after {
     content: " ⚡";
 }
+
 .InfoV h2::after {
     content: " ⚡";
 }
